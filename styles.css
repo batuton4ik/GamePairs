@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Khula&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+  .colorsTime{
+    color: white;
+  }
+/*   .board {
+     display: center; 
+    justify-content: center;
+    align-items: flex-end;
+    position: relative; 
+    padding-left: -100%;
+    padding-right: 90%;
+    transform: translateY(9%); */
+/*     width: 1000px;
+    height: 800px;
+    background: linear-gradient(118.38deg, #29323C -4.6%, #485563 200.44%);
+    box-shadow: -8px -8px 20px #2A333D, 10px 7px 20px #475462;
+    border-radius: 30px;
+    overflow: hidden; */
+  
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(90deg, #29323C 0%, #485563 100%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+/*     padding-top: 2rem;
+    padding-bottom: 2rem; */
+    box-sizing: border-box;
+  }
+
+  .front,
+  .back,
+.memory-game {
+    width: 600px;
+    height: 600px;
+   /*  margin: 6.7% 34% 6.7% 34%; */
+ /*   transform: translateY(20%); */
+      display: flex;
+      flex-wrap: wrap;
+      position: center;
+    
+    perspective: 1000px;
+}
+
+.front,
+.back,
+.card {
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    padding: 3px;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1.5em;
+    color: rgb(88 199 250 / 0%);
+    cursor: pointer;
+    background: #191c29;
+}
+
+.card:active {
+  transform: scale(0.9);
+  transition: transform .3s;
+}
+
+.back{
+    background: #000;
+    
+}
+  
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+    position: absolute;
+    border-radius: 5px;
+    background: #229091;
+    backface-visibility: hidden;
+}
+
+.card.flip{
+    transform: rotateY(180deg);
+}
+
+.front {
+    transform: rotateY(180deg);
+}
+/*
+.card:hover:before{
+  content: "viaCSS ";
+}
+
+   .card:hover:before, .card:hover:after {
+    animation: none;
+    opacity: 0;
+    content: "Sure?";
+    Хочу чтоб при наведении на карту появлялась надпись, но не получается
+}
+ */
+.card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      position: absolute;
+      z-index: -1;
+      top: -1%;
+      left: -2%;
+      animation: spin 2.5s linear infinite;
+  }
+  
+  .card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      opacity: 1;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+
+
+  .timerse-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .timers-list li {
+    margin: 10px;
+  }
+  
+  .timers {
+    background-color: transparent;
+    border: 2px solid #C0C0C0;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 40px;
+  }
+  
+  .timers:hover {
+  
+    color: white;
+  }
+  
+  .timers {
+    --c:  #229091; 
+    
+    box-shadow: 0 0 0 .1em inset var(--c); 
+    --_g: linear-gradient(var(--c) 0 0) no-repeat;
+    background: 
+      var(--_g) calc(var(--_p,0%) - 100%) 0%,
+      var(--_g) calc(200% - var(--_p,0%)) 0%,
+      var(--_g) calc(var(--_p,0%) - 100%) 100%,
+      var(--_g) calc(200% - var(--_p,0%)) 100%;
+    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+    outline-offset: .1em;
+    transition: background-size .4s, background-position 0s .4s;
+  }
+  
+  .timers:hover {
+    --_p: 100%;
+    transition: background-position .4s, background-size 0s;
+  }
+  .timers:active {
+    box-shadow: 0 0 9e9q inset #0009; 
+    background-color: var(--c);
+    color: #fff;
+  }

@@ -1,0 +1,1 @@
+document.getElementsByName("klik")[0].onclick = function(){window.location.href='indexxx.html'}
